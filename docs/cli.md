@@ -17,6 +17,12 @@ Useful CLI flags (see `src/main.rs::Args` for the full set):
 --bind 0.0.0.0:3390       # listen address
 --username NAME           # default: $USER
 --password PASS           # avoid the interactive prompt (logs are warned)
+--password-file PATH      # read the password from a file (not visible in `ps`); the file
+                          #   must be yours with mode 600 and no ACL, else macrdp refuses
+                          #   it. Only a regular file: pipes, `<(...)` and /dev/stdin are
+                          #   refused.
+                          #   Config key PASSWORD_FILE (turns the USE_KEYCHAIN default off;
+                          #   an explicit USE_KEYCHAIN=1 with it is an error)
 --skip-auth               # bypass PAM (also skips password validation)
 --width  / --height       # override autodetected display size
 --hidpi                   # capture the primary display at backing (Retina) pixels
